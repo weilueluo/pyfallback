@@ -28,4 +28,4 @@ json["attr-1"].split('-')[0].get()  # "value"
 
 ## Contributing
 Just submit a pull request :D <br />
-Note: this project uses poetry and pyenv
+Note: this project uses [poetry](https://github.com/python-poetry/poetry) and [pyenv](https://github.com/pyenv/pyenv).
