@@ -1,7 +1,8 @@
 # pyfallback
+Provide a simple Fallback class that wraps an object, any operations that fails will use/return specified fallback.
 
 ## Install
-> pip install fallback
+> pip install pyfallback
 
 ## Usage
 
