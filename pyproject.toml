@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pyfallback"
+version = "0.1.0"
+description = "Provides fallback value for any operations on a python object"
+authors = ["Weilue Luo <luoweilue@gmail.com>"]
+license = "Apache License 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.7"
+
+[tool.poetry.group.dev.dependencies]
+black = {extras = ["d"], version = "^22.12.0"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
