@@ -1,7 +1,7 @@
 import types
 import unittest
 
-from fallback import Fallback
+from pyfallback import Fallback
 
 
 class TestFallback(unittest.TestCase):
