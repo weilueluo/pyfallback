@@ -1,7 +1,7 @@
 import types
 import unittest
 
-from pyfallback import Fallback
+from fallback import Fallback
 
 
 class TestFallback(unittest.TestCase):
@@ -11,12 +11,12 @@ class TestFallback(unittest.TestCase):
         self.test_obj.attr_exists = "attr_exists_value"
 
     def test_objExists(self):
-        wrapper = Fallback(obj="obj", fallback="pyfallback")
+        wrapper = Fallback(obj="obj", fallback="fallback")
         self.assertEqual("obj", wrapper.get())
 
     def test_objDoesNotExists(self):
-        wrapper = Fallback(obj=None, fallback="pyfallback")
-        self.assertEqual("pyfallback", wrapper.get())
+        wrapper = Fallback(obj=None, fallback="fallback")
+        self.assertEqual("fallback", wrapper.get())
 
     def test_getitem(self):
         wrapper = Fallback(obj=self.test_dict, fallback=None)
@@ -24,33 +24,33 @@ class TestFallback(unittest.TestCase):
         self.assertEqual(None, wrapper["key_does_not_exists"].get())
 
     def test_setitem(self):
-        wrapper = Fallback(obj=self.test_dict, fallback="pyfallback")
+        wrapper = Fallback(obj=self.test_dict, fallback="fallback")
         wrapper["new_attr"] = "new_attr_value"
         self.assertEqual("new_attr_value", wrapper["new_attr"].get())
         self.assertEqual("new_attr_value", self.test_dict["new_attr"])
 
     def test_delitem(self):
-        wrapper = Fallback(obj=self.test_dict, fallback="pyfallback")
+        wrapper = Fallback(obj=self.test_dict, fallback="fallback")
         self.assertEqual("value_exists", wrapper["key_exists"].get())
         del wrapper["key_exists"]
-        self.assertEqual("pyfallback", wrapper["key_exists"].get())
+        self.assertEqual("fallback", wrapper["key_exists"].get())
 
     def test_setattributes(self):
-        wrapper = Fallback(obj=self.test_obj, fallback="pyfallback")
+        wrapper = Fallback(obj=self.test_obj, fallback="fallback")
         wrapper.new_attr = "new_attr_value"
         self.assertEqual("new_attr_value", wrapper.new_attr.get())
         self.assertEqual("new_attr_value", self.test_obj.new_attr)
 
     def test_getattributes(self):
-        wrapper = Fallback(obj=self.test_obj, fallback="pyfallback")
+        wrapper = Fallback(obj=self.test_obj, fallback="fallback")
         self.assertEqual("attr_exists_value", wrapper.attr_exists.get())
-        self.assertEqual("pyfallback", wrapper.attr_does_not_exists.get())
+        self.assertEqual("fallback", wrapper.attr_does_not_exists.get())
 
     def test_func(self):
-        func = Fallback(obj=lambda: "return_value", fallback="pyfallback")
-        not_func = Fallback(obj=None, fallback="pyfallback")
+        func = Fallback(obj=lambda: "return_value", fallback="fallback")
+        not_func = Fallback(obj=None, fallback="fallback")
         self.assertEqual("return_value", func().get())
-        self.assertEqual("pyfallback", not_func().get())
+        self.assertEqual("fallback", not_func().get())
 
     def test_iterSuccess(self):
         iterable = [1, 2, 3]
@@ -88,12 +88,12 @@ class TestFallback(unittest.TestCase):
 
     def test_repr(self):
         wrapper = Fallback(123, fallback=456)
-        self.assertEqual("Fallback(obj=123, pyfallback=456)", repr(wrapper))
+        self.assertEqual("Fallback(obj=123, fallback=456)", repr(wrapper))
 
     def test_eq(self):
         wrapper1 = Fallback(123, fallback=456)
         self.assertNotEqual(123, wrapper1)
-        wrapper2 = Fallback(123, fallback="pyfallback not same")
+        wrapper2 = Fallback(123, fallback="fallback not same")
         self.assertEqual(wrapper1, wrapper2)
 
         wrapper3 = Fallback(None, fallback=123)
