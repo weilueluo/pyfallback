@@ -20,7 +20,7 @@ json["exists"].get()  # "exists-value"
 json["not-exists"].get()  # "fallback"
 
 # chaining
-json["attr-1"].split('-')[0].get()  # "exists"
+json["exists"].split('-')[0].get()  # "exists"
 json["not-exists"].split('-')[0].get()  # "fallback"
 
 # see tests/test_fallback.py for more example 
