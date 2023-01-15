@@ -46,7 +46,7 @@ class Fallback:
             else:
                 return Fallback(fallback=self._fallback)
         except TypeError:
-            # not iterable, try if fallback is iter
+            # not iterable, try if pyfallback is iter
             try:
                 return Fallback(fallback=iter(self._fallback))
             except TypeError:
@@ -57,16 +57,16 @@ class Fallback:
             return Fallback(next(self._obj))
         except TypeError:
             pass
-        # obj is None or not iterator, try fallback
+        # obj is None or not iterator, try pyfallback
         try:
             return Fallback(fallback=next(self._fallback))
         except TypeError:
-            # fallback is not an iterator, try to make it one
+            # pyfallback is not an iterator, try to make it one
             try:
                 self._fallback = iter(self._fallback)
                 return Fallback(fallback=next(self._fallback))
             except TypeError:
-                # both obj and fallback does not work
+                # both obj and pyfallback does not work
                 raise StopIteration
 
     def __setitem__(self, key, value):

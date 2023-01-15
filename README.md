@@ -6,7 +6,7 @@
 ## Usage
 
 ```python
-from fallback import Fallback
+from pyfallback import Fallback
 
 json = {
     'attr-1': 'value-1',
