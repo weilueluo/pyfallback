@@ -1,7 +1,16 @@
 [tool.poetry]
 name = "pyfallback"
 version = "0.1.0"
-description = "Provides fallback value for any operations on a python object"
+description = "Provides fallback for operations in python"
+homepage = "https://github.com/weilueluo/pyfallback"
+repository = "https://github.com/weilueluo/pyfallback"
+keywords = ["fallback", "pyfallback"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
 authors = ["Weilue Luo <luoweilue@gmail.com>"]
 license = "Apache License 2.0"
 readme = "README.md"
