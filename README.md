@@ -13,14 +13,15 @@ pip install pyfallback
 ```python
 from pyfallback import Fallback
 
-json = Fallback({'attr-1': 'value-1'}, fallback="fallback")
+json = Fallback({'exists': 'exists-value'}, fallback="fallback-value")
 
 # fallback
-json["attr-1"].get()  # "value1"
-json["attr-2"].get()  # "fallback"
+json["exists"].get()  # "exists-value"
+json["not-exists"].get()  # "fallback"
 
 # chaining
-json["attr-1"].split('-')[0].get()  # "value"
+json["attr-1"].split('-')[0].get()  # "exists"
+json["not-exists"].split('-')[0].get()  # "fallback"
 
 # see tests/test_fallback.py for more example 
 ```
